@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Calculator</title>
+</head>
+<body>
+
+<h2>JavaScript Calculator</h2>
+
+<!-- First number -->
+<input type="number" id="num1" placeholder="Enter number">
+
+<!-- Operator dropdown -->
+<select id="operator">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+</select>
+
+<!-- Second number -->
+<input type="number" id="num2" placeholder="Enter number">
+
+<!-- Calculate button -->
+<button onclick="calculate()">Calculate</button>
+
+<!-- Result -->
+<p id="result"></p>
+
+<script>
+    function calculate() {
+        // Get values from input boxes
+        let number1 = parseFloat(document.getElementById("num1").value);
+        let number2 = parseFloat(document.getElementById("num2").value);
+        let operator = document.getElementById("operator").value;
+        let answer;
+
+        // Check for valid input
+        if (isNaN(number1) || isNaN(number2)) {
+            document.getElementById("result").innerText = "Please enter valid numbers";
+            return;
+        }
+
+        // Perform calculation
+        if (operator === "+") {
+            answer = number1 + number2;
+        } else if (operator === "-") {
+            answer = number1 - number2;
+        } else if (operator === "*") {
+            answer = number1 * number2;
+        } else if (operator === "/") {
+            if (number2 === 0) {
+                document.getElementById("result").innerText = "Cannot divide by zero";
+                return;
+            }
+            answer = number1 / number2;
+        }
+
+        // Display result
+        document.getElementById("result").innerText = "Result: " + answer;
+    }
+</script>
+
+</body>
+</html>
